@@ -1,0 +1,38 @@
+ name: Node.js Package
+
+  on:
+    release:
+      types: [created]
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: oven-sh/setup-bun@v1
+          with:
+            bun-version: latest
+        - run: bun install --frozen-lockfile
+        - run: bun run typecheck
+        - run: bun run lint
+        - run: bun run format:check
+        - run: bun run build
+        # Skip tests until you implement them
+
+    publish-npm:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: oven-sh/setup-bun@v1
+          with:
+            bun-version: latest
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 20
+            registry-url: https://registry.npmjs.org/
+        - run: bun install --frozen-lockfile
+        - run: bun run build:clean
+        - run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
