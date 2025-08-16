@@ -1,13 +1,13 @@
 interface AccountDto {
-    puuid: string
-    gameName: string
-    tagLine: string
+  puuid: string;
+  gameName: string;
+  tagLine: string;
 }
 
 interface AccountRegionDTO {
-    puuid: string
-    game: string
-    region: string
+  puuid: string;
+  game: string;
+  region: string;
 }
 
-export type { AccountDto, AccountRegionDTO }
+export type {AccountDto, AccountRegionDTO};

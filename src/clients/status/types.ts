@@ -1,57 +1,57 @@
 interface ContentDto {
-    locale: string
-    content: string
+  locale: string;
+  content: string;
 }
 
 interface UpdateDto {
-    id: number
-    author: string
-    publish: boolean
-    publish_locations: string[]
-    translations: ContentDto[]
-    created_at: string
-    updated_at: string
+  id: number;
+  author: string;
+  publish: boolean;
+  publish_locations: string[];
+  translations: ContentDto[];
+  created_at: string;
+  updated_at: string;
 }
 
-type MaintenanceStatus = 'scheduled' | 'in_progress' | 'complete'
+type MaintenanceStatus = 'scheduled' | 'in_progress' | 'complete';
 
-type IncidentSeverity = 'info' | 'warning' | 'critical'
+type IncidentSeverity = 'info' | 'warning' | 'critical';
 
 type Platform =
-    | 'windows'
-    | 'macos'
-    | 'android'
-    | 'ios'
-    | 'ps4'
-    | 'xbone'
-    | 'switch'
+  | 'windows'
+  | 'macos'
+  | 'android'
+  | 'ios'
+  | 'ps4'
+  | 'xbone'
+  | 'switch';
 
 interface StatusDto {
-    id: number
-    maintenance_status: MaintenanceStatus
-    incident_severity: IncidentSeverity
-    titles: ContentDto[]
-    updates: ContentDto[]
-    created_at: string
-    archive_at: string
-    updated_at: string
-    platforms: string[]
+  id: number;
+  maintenance_status: MaintenanceStatus;
+  incident_severity: IncidentSeverity;
+  titles: ContentDto[];
+  updates: ContentDto[];
+  created_at: string;
+  archive_at: string;
+  updated_at: string;
+  platforms: string[];
 }
 
 interface PlatformDataDto {
-    id: string
-    name: string
-    locales: string[]
-    maintenances: StatusDto[]
-    incidents: StatusDto[]
+  id: string;
+  name: string;
+  locales: string[];
+  maintenances: StatusDto[];
+  incidents: StatusDto[];
 }
 
 export type {
-    ContentDto,
-    UpdateDto,
-    MaintenanceStatus,
-    IncidentSeverity,
-    Platform,
-    StatusDto,
-    PlatformDataDto,
-}
+  ContentDto,
+  UpdateDto,
+  MaintenanceStatus,
+  IncidentSeverity,
+  Platform,
+  StatusDto,
+  PlatformDataDto,
+};

@@ -1,2 +1,2 @@
-export * from './regionRoutes.js'
-export * from './platformRoutes.js'
+export * from './regionRoutes.js';
+export * from './platformRoutes.js';

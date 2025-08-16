@@ -1,5 +1,5 @@
 interface ClientConfig {
-    apiKey: string
+  apiKey: string;
 }
 
-export type { ClientConfig }
+export type {ClientConfig};

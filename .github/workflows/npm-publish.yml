@@ -1,37 +1,37 @@
-name: Node.js Package
+name: npm-publish
 
 on:
-    release:
-        types: [created]
+  release:
+    types: [created]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - uses: oven-sh/setup-bun@v1
-              with:
-                  bun-version: latest
-            - run: bun install --frozen-lockfile
-            - run: bun run typecheck
-            - run: bun run lint
-            - run: bun run format:check
-            - run: bun run build
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun run lint
+      - run: bun run format:check
+      - run: bun run build
 
-    publish-npm:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - uses: oven-sh/setup-bun@v1
-              with:
-                  bun-version: latest
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  registry-url: https://registry.npmjs.org/
-            - run: bun install --frozen-lockfile
-            - run: bun run build:clean
-            - run: npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - run: bun install --frozen-lockfile
+      - run: bun run build:clean
+      - run: bun publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
