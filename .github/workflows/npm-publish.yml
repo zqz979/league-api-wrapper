@@ -33,6 +33,6 @@
             registry-url: https://registry.npmjs.org/
         - run: bun install --frozen-lockfile
         - run: bun run build:clean
-        - run: npm publish
+        - run: bun publish --access public
           env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
