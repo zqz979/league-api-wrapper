@@ -1,33 +1,113 @@
 {
-    "name": "league-api-wrapper",
+    "name": "@zqz979/league-api-wrapper",
     "version": "0.0.1",
-    "description": "This is a TypeScript library for the League of Legends API.",
-    "main": "index.ts",
-    "scripts": {
-        "format": "prettier --write .",
-        "publish": "pnpm publish --access public"
-    },
+    "description": "TypeScript wrapper for Riot Games League of Legends API",
     "keywords": [
-        "League of Legends",
-        "typescript"
+        "riot",
+        "league-of-legends",
+        "api",
+        "typescript",
+        "gaming",
+        "lol"
     ],
-    "author": {
-        "name": "Kevin Zhu",
-        "email": "zhuqunzhe@icloud.com"
+    "author": "Kevin Zhu",
+    "license": "MIT",
+    "homepage": "https://github.com/zqz979/league-api-wrapper",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zqz979/league-api-wrapper.git"
     },
-    "license": "ISC",
-    "engines": {
-        "node": "22"
+    "bugs": {
+        "url": "https://github.com/zqz979/league-api-wrapper/issues"
     },
-    "packageManager": "pnpm@10.14.0",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "lint": "bunx eslint . --ext .ts,.js",
+        "lint:fix": "eslint src/ --fix",
+        "format": "bunx prettier . --write",
+        "format:check": "prettier --check src/",
+        "typecheck": "tsc --noEmit",
+        "build": "tsc",
+        "build:clean": "rm -rf dist && bun run build",
+        "prepublishOnly": "bun run build:clean && bun run typecheck && bun run lint",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "release": "bun publish --access public"
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./clients": {
+            "import": "./dist/clients/index.js",
+            "types": "./dist/clients/index.d.ts"
+        },
+        "./account": {
+            "import": "./dist/clients/account/index.js",
+            "types": "./dist/clients/account/index.d.ts"
+        },
+        "./champion": {
+            "import": "./dist/clients/champion/index.js",
+            "types": "./dist/clients/champion/index.d.ts"
+        },
+        "./summoner": {
+            "import": "./dist/clients/summoner/index.js",
+            "types": "./dist/clients/summoner/index.d.ts"
+        },
+        "./match": {
+            "import": "./dist/clients/match/index.js",
+            "types": "./dist/clients/match/index.d.ts"
+        },
+        "./challenges": {
+            "import": "./dist/clients/challenges/index.js",
+            "types": "./dist/clients/challenges/index.d.ts"
+        },
+        "./champion-mastery": {
+            "import": "./dist/clients/champion-mastery/index.js",
+            "types": "./dist/clients/champion-mastery/index.d.ts"
+        },
+        "./clash": {
+            "import": "./dist/clients/clash/index.js",
+            "types": "./dist/clients/clash/index.d.ts"
+        },
+        "./league": {
+            "import": "./dist/clients/league/index.js",
+            "types": "./dist/clients/league/index.d.ts"
+        },
+        "./league-exp": {
+            "import": "./dist/clients/league-exp/index.js",
+            "types": "./dist/clients/league-exp/index.d.ts"
+        },
+        "./spectator": {
+            "import": "./dist/clients/spectator/index.js",
+            "types": "./dist/clients/spectator/index.d.ts"
+        },
+        "./status": {
+            "import": "./dist/clients/status/index.js",
+            "types": "./dist/clients/status/index.d.ts"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE",
+        "package.json"
+    ],
     "devDependencies": {
         "@eslint/js": "^9.33.0",
+        "@types/bun": "latest",
         "eslint": "^9.33.0",
-        "eslint-config-prettier": "^10.1.8",
         "globals": "^16.3.0",
         "jiti": "^2.5.1",
         "prettier": "3.6.2",
-        "typescript": "^5.9.2",
         "typescript-eslint": "^8.39.1"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "axios": "^1.11.0"
     }
 }
