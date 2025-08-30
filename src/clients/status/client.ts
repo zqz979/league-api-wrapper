@@ -1,27 +1,25 @@
-import type {Platform} from '../../constants/index.js';
+import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import type {ClientConfig} from '../types.js';
+import {ClientConfig} from '../types.js';
 import {PLATFORM_DATA} from './constants.js';
-import type {PlatformDataDto} from './types.js';
+import {PlatformDataDto} from './types.js';
 
+/**
+ * Client to interact with the Riot Games Status API.
+ */
 class StatusClient extends BaseClient {
   constructor(config: ClientConfig) {
     super(config);
   }
 
   async getStatusByPlatform(platform: Platform): Promise<PlatformDataDto[]> {
-    try {
-      const response = await this.httpClient.get<PlatformDataDto[]>(
-        PLATFORM_DATA,
-        {
-          baseURL: this.getBaseURL(platform),
-        },
-      );
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching league entries:', error);
-      throw error;
-    }
+    const response = await this.httpClient.get<PlatformDataDto[]>(
+      PLATFORM_DATA,
+      {
+        baseURL: this.getBaseURL(platform),
+      },
+    );
+    return response.data;
   }
 }
 

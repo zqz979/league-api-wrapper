@@ -14,13 +14,13 @@ export default [
   {
     rules: {
       'block-scoped-var': 'error',
-      'eqeqeq': 'error',
+      eqeqeq: 'error',
       'no-var': 'error',
       'prefer-const': 'error',
       'eol-last': 'error',
       'prefer-arrow-callback': 'error',
       'no-trailing-spaces': 'error',
-      'quotes': ['warn', 'single', { avoidEscape: true }],
+      quotes: ['warn', 'single', {avoidEscape: true}],
       'no-restricted-properties': [
         'error',
         {

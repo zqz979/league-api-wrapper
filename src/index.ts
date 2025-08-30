@@ -1,1 +1,25 @@
-export * from './clients/index.js';
+export {RiotClient} from './clients/riot-client.js';
+export {AccountClient} from './clients/account/client.js';
+export {ChallengeClient} from './clients/challenges/client.js';
+export {ChampionClient} from './clients/champion/client.js';
+export {ChampionMasteryClient} from './clients/champion-mastery/client.js';
+export {ClashClient} from './clients/clash/client.js';
+export {LeagueClient} from './clients/league/client.js';
+export {LeagueExpClient} from './clients/league-exp/client.js';
+export {MatchClient} from './clients/match/client.js';
+export {SpectatorClient} from './clients/spectator/client.js';
+export {StatusClient} from './clients/status/client.js';
+export {SummonerClient} from './clients/summoner/client.js';
+
+export type * from './clients/types.js';
+export type * from './clients/account/types.js';
+export type * from './clients/challenges/types.js';
+export type * from './clients/champion/types.js';
+export type * from './clients/champion-mastery/types.js';
+export type * from './clients/clash/types.js';
+export type * from './clients/league/types.js';
+export type * from './clients/league-exp/types.js';
+export type * from './clients/match/types.js';
+export type * from './clients/spectator/types.js';
+export type * from './clients/status/types.js';
+export type * from './clients/summoner/types.js';

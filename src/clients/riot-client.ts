@@ -9,7 +9,7 @@ import {MatchClient} from './match/client.js';
 import {SpectatorClient} from './spectator/client.js';
 import {StatusClient} from './status/client.js';
 import {SummonerClient} from './summoner/client.js';
-import type {ClientConfig} from './types.js';
+import {ClientConfig} from './types.js';
 
 class RiotClient {
   champion: ChampionClient;

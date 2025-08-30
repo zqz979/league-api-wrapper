@@ -6,6 +6,7 @@ const LEAGUES = `${BASE}/${VERSION}/leagues`;
 const MASTER_LEAGUES_BY_QUEUE = `${BASE}/${VERSION}/masterleagues/by-queue`;
 const GRAND_MASTER_LEAGUES_BY_QUEUE = `${BASE}/${VERSION}/grandmasterleagues/by-queue`;
 const ENTRIES = `${BASE}/${VERSION}/entries`;
+const ENTRIES_BY_PUUID = `${BASE}/${VERSION}/entries/by-puuid`;
 
 export {
   CHALLENGER_LEAGUES_BY_QUEUE,
@@ -13,4 +14,5 @@ export {
   MASTER_LEAGUES_BY_QUEUE,
   GRAND_MASTER_LEAGUES_BY_QUEUE,
   ENTRIES,
+  ENTRIES_BY_PUUID,
 };

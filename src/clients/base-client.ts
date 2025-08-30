@@ -1,12 +1,8 @@
-import type {AxiosInstance} from 'axios';
+import {AxiosInstance} from 'axios';
 import axios from 'axios';
-import {
-  PLATFORM_ROUTES,
-  REGION_ROUTES,
-  type Platform,
-  type Region,
-} from '../constants/index.js';
-import type {ClientConfig} from './types.js';
+import {PLATFORM_ROUTES, REGION_ROUTES, Platform, Region} from './constants.js';
+import {ClientConfig} from './types.js';
+import {RiotApiError} from './errors.js';
 
 class BaseClient {
   protected readonly httpClient: AxiosInstance;
@@ -17,6 +13,20 @@ class BaseClient {
         'X-Riot-Token': config.apiKey,
       },
     });
+
+    this.httpClient.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response) {
+          throw new RiotApiError(
+            error.response.status,
+            error.response.data,
+            error.message,
+          );
+        }
+        throw error;
+      },
+    );
   }
 
   protected getBaseURL(route: Region | Platform): string {

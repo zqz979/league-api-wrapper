@@ -1,3 +1,14 @@
+type Tier =
+  | 'IRON'
+  | 'BRONZE'
+  | 'SILVER'
+  | 'GOLD'
+  | 'PLATINUM'
+  | 'EMERALD'
+  | 'DIAMOND';
+type Division = 'I' | 'II' | 'III' | 'IV';
+type Queue = 'RANKED_SOLO_5x5' | 'RANKED_FLEX_SR' | 'RANKED_FLEX_TT';
+
 interface MiniSeriesDTO {
   losses: number;
   progress: string;
@@ -21,7 +32,7 @@ interface LeagueItemDTO {
 interface LeagueListDTO {
   leagueId: string;
   entries: LeagueItemDTO[];
-  tier: string;
+  tier: Tier;
   name: string;
   queue: string;
 }
@@ -37,7 +48,7 @@ interface LeagueEntryDTO {
   leagueId: string;
   puuid: string;
   queueType: string;
-  tier: string;
+  tier: Tier;
   rank: string;
   leaguePoints: number;
   wins: number;
@@ -48,17 +59,6 @@ interface LeagueEntryDTO {
   inactive: boolean;
   miniSeries: MiniSeriesDTO;
 }
-
-type Queue = 'RANKED_SOLO_5x5' | 'RANKED_FLEX_SR' | 'RANKED_FLEX_TT';
-type Tier =
-  | 'IRON'
-  | 'BRONZE'
-  | 'SILVER'
-  | 'GOLD'
-  | 'PLATINUM'
-  | 'EMERALD'
-  | 'DIAMOND';
-type Division = 'I' | 'II' | 'III' | 'IV';
 
 export type {
   LeagueItemDTO,

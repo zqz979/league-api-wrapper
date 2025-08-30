@@ -1,4 +1,4 @@
-import {type LeagueEntryDTO} from '../league/index.js';
+import {LeagueEntryDTO} from '../league/types.js';
 
 interface LeagueEntryDTOExtended extends LeagueEntryDTO {
   summonerId: string;

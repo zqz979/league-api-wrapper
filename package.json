@@ -1,6 +1,6 @@
 {
   "name": "@zqz979/league-api-wrapper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "TypeScript wrapper for Riot Games League of Legends API",
   "keywords": [
     "riot",
@@ -10,7 +10,7 @@
     "gaming",
     "lol"
   ],
-  "author": "Kevin Zhu",
+  "author": "Qunzhe Zhu",
   "license": "MIT",
   "homepage": "https://github.com/zqz979/league-api-wrapper",
   "repository": {
@@ -24,69 +24,28 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "lint": "bunx eslint . --ext .ts,.js",
-    "lint:fix": "eslint src/ --fix",
-    "format": "bunx prettier . --write",
-    "format:check": "prettier --check src/",
-    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf node_modules dist",
+    "check:types": "tsc --noEmit",
+    "check:format": "prettier --check .",
+    "check:lint": "eslint . --ext .ts,.js",
+    "watch": "tsc --watch",
     "build": "tsc",
-    "build:clean": "rm -rf dist && bun run build",
-    "prepublishOnly": "bun run build:clean && bun run typecheck && bun run lint",
+    "build:clean": "rm -rf dist && pnpm build",
+    "prepare": "pnpm build",
+    "prepublishOnly": "pnpm build:clean && pnpm typecheck && pnpm lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
-    "./clients": {
-      "import": "./dist/clients/index.js",
-      "types": "./dist/clients/index.d.ts"
+    "./types": {
+      "import": "./dist/clients/types.js",
+      "types": "./dist/clients/types.d.ts"
     },
-    "./account": {
-      "import": "./dist/clients/account/index.js",
-      "types": "./dist/clients/account/index.d.ts"
-    },
-    "./champion": {
-      "import": "./dist/clients/champion/index.js",
-      "types": "./dist/clients/champion/index.d.ts"
-    },
-    "./summoner": {
-      "import": "./dist/clients/summoner/index.js",
-      "types": "./dist/clients/summoner/index.d.ts"
-    },
-    "./match": {
-      "import": "./dist/clients/match/index.js",
-      "types": "./dist/clients/match/index.d.ts"
-    },
-    "./challenges": {
-      "import": "./dist/clients/challenges/index.js",
-      "types": "./dist/clients/challenges/index.d.ts"
-    },
-    "./champion-mastery": {
-      "import": "./dist/clients/champion-mastery/index.js",
-      "types": "./dist/clients/champion-mastery/index.d.ts"
-    },
-    "./clash": {
-      "import": "./dist/clients/clash/index.js",
-      "types": "./dist/clients/clash/index.d.ts"
-    },
-    "./league": {
-      "import": "./dist/clients/league/index.js",
-      "types": "./dist/clients/league/index.d.ts"
-    },
-    "./league-exp": {
-      "import": "./dist/clients/league-exp/index.js",
-      "types": "./dist/clients/league-exp/index.d.ts"
-    },
-    "./spectator": {
-      "import": "./dist/clients/spectator/index.js",
-      "types": "./dist/clients/spectator/index.d.ts"
-    },
-    "./status": {
-      "import": "./dist/clients/status/index.js",
-      "types": "./dist/clients/status/index.d.ts"
-    }
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
@@ -96,15 +55,11 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.33.0",
-    "@types/bun": "latest",
     "eslint": "^9.33.0",
     "globals": "^16.3.0",
-    "jiti": "^2.5.1",
     "prettier": "3.6.2",
+    "typescript": "^5.7.2",
     "typescript-eslint": "^8.39.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
   },
   "dependencies": {
     "axios": "^1.11.0"

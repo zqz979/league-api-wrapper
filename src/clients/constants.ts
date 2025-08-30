@@ -1,6 +1,6 @@
-import {API_BASE_DOMAIN} from './baseDomain.js';
+const API_BASE_DOMAIN = 'api.riotgames.com';
 
-export const PLATFORM_ROUTES = {
+const PLATFORM_ROUTES = {
   BR1: `br1.${API_BASE_DOMAIN}`,
   EUN1: `eun1.${API_BASE_DOMAIN}`,
   EUW1: `euw1.${API_BASE_DOMAIN}`,
@@ -19,4 +19,16 @@ export const PLATFORM_ROUTES = {
   VN2: `vn2.${API_BASE_DOMAIN}`,
 } as const;
 
-export type Platform = keyof typeof PLATFORM_ROUTES;
+type Platform = keyof typeof PLATFORM_ROUTES;
+
+const REGION_ROUTES = {
+  AMERICAS: `americas.${API_BASE_DOMAIN}`,
+  ASIA: `asia.${API_BASE_DOMAIN}`,
+  EUROPE: `europe.${API_BASE_DOMAIN}`,
+  SEA: `sea.${API_BASE_DOMAIN}`,
+} as const;
+
+type Region = keyof typeof REGION_ROUTES;
+
+export {API_BASE_DOMAIN, PLATFORM_ROUTES, REGION_ROUTES};
+export type {Platform, Region};

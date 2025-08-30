@@ -4,6 +4,26 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zqz979/league-api-wrapper/npm-publish.yml)
 ![GitHub License](https://img.shields.io/github/license/zqz979/league-api-wrapper)
 
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Prerequisites](#prerequisites)
+- [Quick Start](#quick-start)
+- [Modular Imports](#modular-imports)
+- [API Reference](#api-reference)
+- [Examples](#examples)
+- [Convenience Utilities](#convenience-utilities)
+- [Error Handling](#error-handling)
+- [Rate Limiting](#rate-limiting)
+- [Environment Variables](#environment-variables)
+- [TypeScript Support](#typescript-support)
+- [CI/CD & Publishing](#cicd--publishing)
+- [Contributing](#contributing)
+- [License](#license)
+- [Disclaimer](#disclaimer)
+- [Support](#support)
+
 A comprehensive TypeScript wrapper for the Riot Games League of Legends API. This library provides type-safe access to all League of Legends API endpoints with a clean, modern interface.
 
 ## Features
@@ -62,18 +82,66 @@ console.log(match.info.gameDuration);
 
 ### Modular Imports
 
-You can import individual clients to reduce bundle size:
+You can import individual clients and types directly from the main entry point for optimal tree-shaking:
 
 ```typescript
-import {SummonerClient, MatchClient} from '@zqz979/league-api-wrapper/clients';
+import {
+  SummonerClient,
+  MatchClient,
+  SummonerDTO,
+} from '@zqz979/league-api-wrapper';
 
 const summonerClient = new SummonerClient({apiKey: 'YOUR_API_KEY'});
 const matchClient = new MatchClient({apiKey: 'YOUR_API_KEY'});
 
-// Or import specific clients directly
-import {SummonerClient} from '@zqz979/league-api-wrapper/summoner';
-import {MatchClient} from '@zqz979/league-api-wrapper/match';
+// Use types for type-safe responses
+const summoner: SummonerDTO = await summonerClient.getSummonerByEncryptedPUUID(
+  'NA1',
+  puuid,
+);
 ```
+
+## Convenience Utilities
+
+This library is designed for flexibility, but you can easily add your own helper functions for common tasks. Example:
+
+### Summoner Lookup Utility
+
+```typescript
+async function lookupSummonerByName(
+  client: SummonerClient,
+  platform: string,
+  name: string,
+) {
+  // You may need to implement Riot ID lookup logic here
+  return await client.getSummonerByName(platform, name);
+}
+```
+
+### Match Summary Utility
+
+```typescript
+function summarizeMatch(match: MatchDto) {
+  return {
+    gameId: match.metadata.matchId,
+    duration: match.info.gameDuration,
+    participants: match.info.participants.map(p => ({
+      summonerName: p.summonerName,
+      champion: p.championName,
+      win: p.win,
+      kills: p.kills,
+      deaths: p.deaths,
+      assists: p.assists,
+    })),
+  };
+}
+```
+
+## CI/CD & Publishing
+
+This package uses GitHub Actions for automated testing and publishing to npm. On every release, the workflow runs type checks, linting, formatting, and builds before publishing.
+
+See `.github/workflows/npm-publish.yml` for details.
 
 ## API Reference
 
@@ -161,7 +229,7 @@ async function getSummonerInfo(puuid: string) {
 async function getRecentMatches(puuid: string) {
   try {
     // Get recent match IDs
-    const matchIds = await client.match.getMatchIdsByPUUID(
+    const matchIds = await client.match.getMatchIdsByPuuid(
       'AMERICAS',
       puuid,
       undefined, // startTime
