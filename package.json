@@ -1,6 +1,6 @@
 {
   "name": "@zqz979/league-api-wrapper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TypeScript wrapper for Riot Games League of Legends API",
   "keywords": [
     "riot",
