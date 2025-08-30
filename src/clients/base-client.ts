@@ -22,9 +22,9 @@ class BaseClient {
   protected getBaseURL(route: Region | Platform): string {
     let baseURL: string;
     if (route in REGION_ROUTES) {
-      baseURL = REGION_ROUTES[route as Region];
+      baseURL = `https://${REGION_ROUTES[route as Region]}`;
     } else {
-      baseURL = PLATFORM_ROUTES[route as Platform];
+      baseURL = `https://${PLATFORM_ROUTES[route as Platform]}`;
     }
     return baseURL;
   }

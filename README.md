@@ -1,9 +1,8 @@
 # League API Wrapper
 
-[![NPM Version][npm-image]][npm-url]
-[![GitHub Actions][github-image]][github-url]
-[![License][license-image]][license-url]
-[![TypeScript][typescript-image]][typescript-url]
+![NPM Version](https://img.shields.io/npm/v/%40zqz979%2Fleague-api-wrapper)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zqz979/league-api-wrapper/npm-publish.yml)
+![GitHub License](https://img.shields.io/github/license/zqz979/league-api-wrapper)
 
 A comprehensive TypeScript wrapper for the Riot Games League of Legends API. This library provides type-safe access to all League of Legends API endpoints with a clean, modern interface.
 
@@ -367,8 +366,3 @@ This project is not affiliated with Riot Games. League of Legends is a trademark
 - 🐛 [Report bugs](https://github.com/zqz979/league-api-wrapper/issues)
 - 💡 [Request features](https://github.com/zqz979/league-api-wrapper/issues)
 - 📖 [Riot Games API Documentation](https://developer.riotgames.com/docs/lol)
-
-[npm-image]: https://img.shields.io/npm/v/%40zqz979%2Fleague-api-wrapper
-[npm-url]: https://www.npmjs.com/package/@zqz979/league-api-wrapper
-[github-image]: https://github.com/zqz979/league-api-wrapper/actions/workflows/npm-publish.yml/badge.svg
-[github-url]: https://github.com/zqz979/league-api-wrapper/actions/workflows/npm-publish.yml
