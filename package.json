@@ -32,7 +32,7 @@
     "build": "tsc",
     "build:clean": "rm -rf dist && pnpm build",
     "prepare": "pnpm build",
-    "prepublishOnly": "pnpm build:clean && pnpm typecheck && pnpm lint",
+    "prepublishOnly": "pnpm build:clean && pnpm check:types && pnpm check:lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
