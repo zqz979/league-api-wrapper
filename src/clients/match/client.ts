@@ -34,7 +34,7 @@ class MatchClient extends BaseClient {
     count?: number,
   ): Promise<string[]> {
     const response = await this.httpClient.get<string[]>(
-      `${MATCHES}/${puuid}/ids`,
+      `${MATCHES}/by-puuid/${puuid}/ids`,
       {
         baseURL: this.getBaseURL(region),
         params: {startTime, endTime, queue, type, start, count},
