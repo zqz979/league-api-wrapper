@@ -2,4 +2,9 @@ interface ClientConfig {
   apiKey: string;
 }
 
-export type {ClientConfig};
+interface RiotId {
+  gameName: string;
+  tagLine: string;
+}
+
+export type {ClientConfig, RiotId};

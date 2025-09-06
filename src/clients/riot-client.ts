@@ -3,13 +3,15 @@ import {ChallengeClient} from './challenges/client.js';
 import {ChampionMasteryClient} from './champion-mastery/client.js';
 import {ChampionClient} from './champion/client.js';
 import {ClashClient} from './clash/client.js';
+import {Region} from './constants.js';
 import {LeagueExpClient} from './league-exp/client.js';
 import {LeagueClient} from './league/client.js';
 import {MatchClient} from './match/client.js';
+import {MatchDto} from './match/types.js';
 import {SpectatorClient} from './spectator/client.js';
 import {StatusClient} from './status/client.js';
 import {SummonerClient} from './summoner/client.js';
-import {ClientConfig} from './types.js';
+import {ClientConfig, RiotId} from './types.js';
 
 class RiotClient {
   champion: ChampionClient;
@@ -36,6 +38,32 @@ class RiotClient {
     this.challenge = new ChallengeClient(config);
     this.championMastery = new ChampionMasteryClient(config);
     this.spectator = new SpectatorClient(config);
+  }
+
+  async getMatchHistory(
+    region: Region,
+    riotId?: RiotId,
+    puuid?: string,
+  ): Promise<MatchDto[]> {
+    if (!puuid) {
+      const {gameName, tagLine} = riotId || {};
+      if (gameName && tagLine) {
+        const accountDto = await this.account.getAccountByRiotId(
+          region,
+          gameName,
+          tagLine,
+        );
+        puuid = accountDto.puuid;
+      } else {
+        throw new Error(
+          'Either puuid or both gameName and tagLine must be provided',
+        );
+      }
+    }
+    const matchIds = await this.match.getMatchIdsByPuuid(region, puuid);
+    return Promise.all(
+      matchIds.map(matchId => this.match.getMatchByMatchId(region, matchId)),
+    );
   }
 }
 
