@@ -60,7 +60,16 @@ class RiotClient {
         );
       }
     }
-    const matchIds = await this.match.getMatchIdsByPuuid(region, puuid);
+    const matchIds = await this.match.getMatchIdsByPuuid(
+      region,
+      puuid,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      0,
+      5,
+    );
     return Promise.all(
       matchIds.map(matchId => this.match.getMatchByMatchId(region, matchId)),
     );
