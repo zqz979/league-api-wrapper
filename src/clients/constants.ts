@@ -19,8 +19,6 @@ const PLATFORM_ROUTES = {
   VN2: `vn2.${API_BASE_DOMAIN}`,
 } as const;
 
-type Platform = keyof typeof PLATFORM_ROUTES;
-
 const REGION_ROUTES = {
   AMERICAS: `americas.${API_BASE_DOMAIN}`,
   ASIA: `asia.${API_BASE_DOMAIN}`,
@@ -28,7 +26,4 @@ const REGION_ROUTES = {
   SEA: `sea.${API_BASE_DOMAIN}`,
 } as const;
 
-type Region = keyof typeof REGION_ROUTES;
-
 export {API_BASE_DOMAIN, PLATFORM_ROUTES, REGION_ROUTES};
-export type {Platform, Region};

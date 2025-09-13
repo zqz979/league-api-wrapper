@@ -1,3 +1,5 @@
+import {PLATFORM_ROUTES, REGION_ROUTES} from './constants.js';
+
 interface ClientConfig {
   apiKey: string;
 }
@@ -30,4 +32,16 @@ interface GameType {
   description: string;
 }
 
-export type {ClientConfig, RiotId, GameMode, GameMap, GameQueue, GameType};
+type Platform = keyof typeof PLATFORM_ROUTES;
+type Region = keyof typeof REGION_ROUTES;
+
+export type {
+  ClientConfig,
+  RiotId,
+  GameMode,
+  GameMap,
+  GameQueue,
+  GameType,
+  Platform,
+  Region,
+};

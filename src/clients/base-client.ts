@@ -1,7 +1,7 @@
 import {AxiosInstance} from 'axios';
 import axios from 'axios';
-import {PLATFORM_ROUTES, REGION_ROUTES, Platform, Region} from './constants.js';
-import {ClientConfig} from './types.js';
+import {PLATFORM_ROUTES, REGION_ROUTES} from './constants.js';
+import {ClientConfig, Platform, Region} from './types.js';
 import {RiotApiError} from './errors.js';
 
 class BaseClient {

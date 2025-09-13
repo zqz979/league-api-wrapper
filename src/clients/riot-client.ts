@@ -4,7 +4,6 @@ import {ChallengeClient} from './challenges/client.js';
 import {ChampionMasteryClient} from './champion-mastery/client.js';
 import {ChampionClient} from './champion/client.js';
 import {ClashClient} from './clash/client.js';
-import {Region} from './constants.js';
 import {LeagueExpClient} from './league-exp/client.js';
 import {LeagueClient} from './league/client.js';
 import {MatchClient} from './match/client.js';
@@ -18,6 +17,7 @@ import {
   GameMode,
   GameQueue,
   GameType,
+  Region,
   RiotId,
 } from './types.js';
 

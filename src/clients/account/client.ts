@@ -1,8 +1,7 @@
-import {Region} from '../constants.js';
 import {BaseClient} from '../base-client.js';
 import {BY_PUUID, BY_RIOT_ID, ACTIVE_REGION} from './constants.js';
 import type {AccountDto, AccountRegionDTO} from './types.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Region} from '../types.js';
 
 /**
  * Client for accessing Riot Games account-related endpoints.

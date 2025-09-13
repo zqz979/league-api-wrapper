@@ -1,6 +1,6 @@
-import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Platform} from '../types.js';
+
 import {
   PLAYERS_BY_PUUID,
   TEAMS,

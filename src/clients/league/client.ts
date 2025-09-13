@@ -1,6 +1,6 @@
-import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Platform} from '../types.js';
+
 import {
   CHALLENGER_LEAGUES_BY_QUEUE,
   GRAND_MASTER_LEAGUES_BY_QUEUE,

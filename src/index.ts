@@ -11,6 +11,7 @@ export {SpectatorClient} from './clients/spectator/client.js';
 export {StatusClient} from './clients/status/client.js';
 export {SummonerClient} from './clients/summoner/client.js';
 
+export * from './clients/constants.js';
 export type * from './clients/types.js';
 export type * from './clients/account/types.js';
 export type * from './clients/challenges/types.js';

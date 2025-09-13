@@ -1,6 +1,5 @@
-import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Platform} from '../types.js';
 import {PLATFORM_DATA} from './constants.js';
 import {PlatformDataDto} from './types.js';
 

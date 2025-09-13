@@ -1,9 +1,8 @@
-import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
 import {ENTRIES} from './constants.js';
 import {Division, Queue, Tier} from '../league/types.js';
 import {LeagueEntryDTOExtended} from './types.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Platform} from '../types.js';
 
 /**
  * Client for the League Exp API.

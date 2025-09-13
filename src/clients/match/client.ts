@@ -1,6 +1,5 @@
-import {Region} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Region} from '../types.js';
 import {MATCHES} from './constants.js';
 import {MatchDto, TimelineDto} from './types.js';
 

@@ -17,7 +17,7 @@ type MaintenanceStatus = 'scheduled' | 'in_progress' | 'complete';
 
 type IncidentSeverity = 'info' | 'warning' | 'critical';
 
-type Platform =
+type OSPlatform =
   | 'windows'
   | 'macos'
   | 'android'
@@ -35,7 +35,7 @@ interface StatusDto {
   created_at: string;
   archive_at: string;
   updated_at: string;
-  platforms: string[];
+  platforms: OSPlatform[];
 }
 
 interface PlatformDataDto {
@@ -51,7 +51,7 @@ export type {
   UpdateDto,
   MaintenanceStatus,
   IncidentSeverity,
-  Platform,
+  OSPlatform,
   StatusDto,
   PlatformDataDto,
 };

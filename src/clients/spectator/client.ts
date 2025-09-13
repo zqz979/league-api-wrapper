@@ -1,6 +1,5 @@
-import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Platform} from '../types.js';
 import {ACTIVE_GAMES_BY_SUMMONER, FEATURED_GAMES} from './constants.js';
 import {CurrentGameInfo, FeaturedGames} from './types.js';
 

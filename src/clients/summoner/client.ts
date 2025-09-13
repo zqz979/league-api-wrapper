@@ -1,6 +1,5 @@
-import {Platform} from '../constants.js';
 import {BaseClient} from '../base-client.js';
-import {ClientConfig} from '../types.js';
+import {ClientConfig, Platform} from '../types.js';
 import {SOMMONER_BY_PUUID} from './constants.js';
 import {SummonerDTO} from './types.js';
 
