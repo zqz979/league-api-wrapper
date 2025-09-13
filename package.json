@@ -1,6 +1,6 @@
 {
   "name": "@zqz979/league-api-wrapper",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "TypeScript wrapper for Riot Games League of Legends API",
   "keywords": [
     "riot",
@@ -29,8 +29,6 @@
     "check:lint": "eslint . --ext .ts,.js",
     "watch": "tsc --watch",
     "build": "rollup -c",
-    "prepare": "pnpm build",
-    "prepublishOnly": "pnpm build:clean && pnpm check:types && pnpm check:lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {

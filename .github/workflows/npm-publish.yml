@@ -16,6 +16,11 @@ jobs:
       - run: pnpm run check:types
       - run: pnpm run check:lint
       - run: pnpm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
 
   publish-npm:
     needs: build
@@ -29,8 +34,11 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org/
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
+      - name: Download build artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: dist
+          path: dist/
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
