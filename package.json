@@ -1,6 +1,6 @@
 {
   "name": "@zqz979/league-api-wrapper",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "TypeScript wrapper for Riot Games League of Legends API",
   "keywords": [
     "riot",
@@ -28,8 +28,7 @@
     "check:types": "tsc --noEmit",
     "check:lint": "eslint . --ext .ts,.js",
     "watch": "tsc --watch",
-    "build": "tsc",
-    "build:clean": "rm -rf dist && pnpm build",
+    "build": "rollup -c",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm build:clean && pnpm check:types && pnpm check:lint",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -37,13 +36,9 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
-    },
-    "./types": {
-      "import": "./dist/clients/types.js",
-      "types": "./dist/clients/types.d.ts"
-    },
-    "./package.json": "./package.json"
+    }
   },
   "files": [
     "dist",
@@ -53,14 +48,19 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.4",
     "eslint": "^9.33.0",
     "globals": "^16.3.0",
     "jiti": "^2.5.1",
     "prettier": "3.6.2",
+    "rollup": "^4.50.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.39.1"
   },
   "dependencies": {
-    "axios": "^1.11.0"
+    "axios": "^1.11.0",
+    "tslib": "^2.8.1"
   }
 }
