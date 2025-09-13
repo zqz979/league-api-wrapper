@@ -1,6 +1,6 @@
 {
   "name": "@zqz979/league-api-wrapper",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "TypeScript wrapper for Riot Games League of Legends API",
   "keywords": [
     "riot",
@@ -37,7 +37,6 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
     "./types": {
