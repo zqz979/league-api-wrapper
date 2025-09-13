@@ -1,4 +1,5 @@
 import {AccountClient} from './account/client.js';
+import {BaseClient} from './base-client.js';
 import {ChallengeClient} from './challenges/client.js';
 import {ChampionMasteryClient} from './champion-mastery/client.js';
 import {ChampionClient} from './champion/client.js';
@@ -11,9 +12,16 @@ import {MatchDto} from './match/types.js';
 import {SpectatorClient} from './spectator/client.js';
 import {StatusClient} from './status/client.js';
 import {SummonerClient} from './summoner/client.js';
-import {ClientConfig, RiotId} from './types.js';
+import {
+  ClientConfig,
+  GameMap,
+  GameMode,
+  GameQueue,
+  GameType,
+  RiotId,
+} from './types.js';
 
-class RiotClient {
+class RiotClient extends BaseClient {
   champion: ChampionClient;
   summoner: SummonerClient;
   league: LeagueClient;
@@ -27,6 +35,7 @@ class RiotClient {
   spectator: SpectatorClient;
 
   constructor(config: ClientConfig) {
+    super(config);
     this.champion = new ChampionClient(config);
     this.summoner = new SummonerClient(config);
     this.league = new LeagueClient(config);
@@ -38,6 +47,41 @@ class RiotClient {
     this.challenge = new ChallengeClient(config);
     this.championMastery = new ChampionMasteryClient(config);
     this.spectator = new SpectatorClient(config);
+  }
+
+  async getGameModes(): Promise<GameMode[]> {
+    const response = await this.httpClient.get<GameMode[]>(
+      'https://static.developer.riotgames.com/docs/lol/gameModes.json',
+    );
+    return response.data;
+  }
+
+  async getGameMaps(): Promise<GameMap[]> {
+    const response = await this.httpClient.get<GameMap[]>(
+      'https://static.developer.riotgames.com/docs/lol/maps.json',
+    );
+    return response.data;
+  }
+
+  async getGameQueues(): Promise<GameQueue[]> {
+    const response = await this.httpClient.get<GameQueue[]>(
+      'https://static.developer.riotgames.com/docs/lol/queues.json',
+    );
+    return response.data;
+  }
+
+  async getGameTypes(): Promise<GameType[]> {
+    const response = await this.httpClient.get<GameType[]>(
+      'https://static.developer.riotgames.com/docs/lol/gameTypes.json',
+    );
+    return response.data;
+  }
+
+  private async _getDataDragonVersions(): Promise<string[]> {
+    const response = await this.httpClient.get<string[]>(
+      'https://ddragon.leagueoflegends.com/api/versions.json',
+    );
+    return response.data;
   }
 
   async getMatchHistory(

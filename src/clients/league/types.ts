@@ -44,10 +44,16 @@ interface MiniSeriesDTO {
   wins: number;
 }
 
+type QueueType =
+  | 'RANKED_SOLO_5x5'
+  | 'RANKED_TEAM_5x5'
+  | 'RANKED_SOLO_5x5'
+  | 'RANKED_TEAM_5x5';
+
 interface LeagueEntryDTO {
   leagueId: string;
   puuid: string;
-  queueType: string;
+  queueType: QueueType;
   tier: Tier;
   rank: string;
   leaguePoints: number;
