@@ -58,7 +58,7 @@ class ChampionMasteryClient extends BaseClient {
     count?: number,
   ): Promise<ChampionMasteryDto[]> {
     const response = await this.httpClient.get<ChampionMasteryDto[]>(
-      `$CHAMPION_MASTERIES_BY_PUUID}/${encryptedPUUID}/top`,
+      `${CHAMPION_MASTERIES_BY_PUUID}/${encryptedPUUID}/top`,
       {
         baseURL: this.getBaseURL(platform),
         params: {count},
