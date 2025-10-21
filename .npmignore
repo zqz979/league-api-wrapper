@@ -1,0 +1,24 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Config files
+tsconfig.json
+rollup.config.js
+eslint.config.ts
+.prettierrc.*
+
+# Dev files
+.git/
+.github/
+node_modules/
+*.log
+pnpm-lock.yaml
+.DS_Store
+
+# Test files
+**/*.test.ts
+**/*.spec.ts
+__tests__/
+coverage/
