@@ -15,9 +15,48 @@ export default [
         file: 'dist/index.cjs',
         format: 'cjs',
         sourcemap: true,
+        exports: 'named',
       },
     ],
-    plugins: [resolve(), commonjs(), typescript()],
-    external: ['axios', 'tslib'],
+    external: ['axios', 'p-limit', 'tslib'],
+    plugins: [
+      resolve({
+        preferBuiltins: true,
+      }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationMap: true,
+        declarationDir: 'dist',
+      }),
+    ],
+  },
+  {
+    input: 'src/ddragon/urls.ts',
+    output: [
+      {
+        file: 'dist/ddragon/urls.js',
+        format: 'esm',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/ddragon/urls.cjs',
+        format: 'cjs',
+        sourcemap: true,
+        exports: 'named',
+      },
+    ],
+    external: [],
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationMap: true,
+        declarationDir: 'dist/ddragon',
+      }),
+    ],
   },
 ];
