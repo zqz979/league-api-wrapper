@@ -24,3 +24,6 @@ export type * from './clients/match/types.js';
 export type * from './clients/spectator/types.js';
 export type * from './clients/status/types.js';
 export type * from './clients/summoner/types.js';
+
+// Export Data Dragon URL builders
+export * from './ddragon/urls.js';
